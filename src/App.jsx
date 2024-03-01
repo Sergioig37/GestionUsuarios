@@ -16,11 +16,13 @@ export const App = () => {
 
   return (
     <>
-      <NavBar />
+      
       <BrowserRouter>
+      <NavBar />
         <Routes>
           <Route path="/" element={<UserList users={users}/>}></Route>
           <Route path="create" element={<UserCreate users={users} onAddUser={addUser}/>}></Route>  
+          <Route path="*/update/:id" element={<UserCreate/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
