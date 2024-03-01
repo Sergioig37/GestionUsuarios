@@ -6,7 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import usersArray from "../js/UsersArrayV1";
 import { Button } from "@mui/material";
 
 export const UserList = ({users}) => {
@@ -19,6 +18,7 @@ export const UserList = ({users}) => {
         variant="contained"
         color="primary"
         className="submit"
+        href="/create"
       >
         Crear Usuario
       </Button>
