@@ -14,6 +14,19 @@ export const App = () => {
     setUsers([user, ...users]);
   }
 
+
+  //   fetch('https://www.melivecode.com/api/users/delete', {
+  //   method: 'DELETE',
+  //   headers: {
+  //     Accept: 'application/form-data',
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(data),
+  // })
+  // var data = {
+  //   'id': id
+  // }
+
   return (
     <>
       
