@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,9 +7,44 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Edit } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
+import {Button} from "@mui/material";
 
-export const UserList = ({users}) => {
+export const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://www.melivecode.com/api/users")
+      .then((res) => res.json())
+      .then((result) => {
+        setUsers(result);
+      });
+  });
+
+  const navigate = useNavigate();
+
+  const handleInfo = (id) => {
+    navigate(`/update/${id}`);
+  };
+
+  const handleDelete = (idUser) => {
+
+    var data = {
+      id: idUser,
+    }
+
+    fetch('https://www.melivecode.com/api/users/delete', {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      window.location("/");
+  };
 
   return (
     <>
@@ -47,6 +83,16 @@ export const UserList = ({users}) => {
                 <TableCell align="right">{user.username}</TableCell>
                 <TableCell align="right">
                   <img src={user.avatar} alt="" style={{ maxHeight: 150 }} />
+                </TableCell>
+                <TableCell>
+                  <IconButton edge="end" aria-label="delete">
+                    <Edit onClick={() => handleInfo(user.id)} />
+                  </IconButton>
+                </TableCell>
+                <TableCell>
+                  <IconButton edge="end" aria-label="delete">
+                    <Delete onClick={() => handleDelete(user.id)} />
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
