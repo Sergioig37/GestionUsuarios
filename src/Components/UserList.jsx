@@ -86,13 +86,13 @@ export const UserList = () => {
                   <img src={user.avatar} alt="" style={{ maxHeight: 150 }} />
                 </TableCell>
                 <TableCell>
-                  <IconButton edge="end" aria-label="delete">
-                    <Edit onClick={() => handleInfo(user.id)} />
+                  <IconButton edge="end" aria-label="edit" onClick={() => handleInfo(user.id)}>
+                    <Edit  />
                   </IconButton>
                 </TableCell>
                 <TableCell>
-                  <IconButton edge="end" aria-label="delete">
-                    <Delete onClick={() => handleDelete(user.id)} />
+                  <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(user.id)} >
+                    <Delete />
                   </IconButton>
                 </TableCell>
               </TableRow>
