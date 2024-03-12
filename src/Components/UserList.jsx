@@ -13,6 +13,7 @@ import { Delete } from "@mui/icons-material";
 import {Button} from "@mui/material";
 
 export const UserList = () => {
+  
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export const UserList = () => {
       },
       body: JSON.stringify(data),
     })
-      window.location("/");
+      
   };
 
   return (
